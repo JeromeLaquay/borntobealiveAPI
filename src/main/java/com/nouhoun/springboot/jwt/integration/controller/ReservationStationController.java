@@ -1,5 +1,6 @@
 package com.nouhoun.springboot.jwt.integration.controller;
 
+import com.nouhoun.springboot.jwt.integration.domain.ReservationCar;
 import com.nouhoun.springboot.jwt.integration.domain.ReservationStation;
 import com.nouhoun.springboot.jwt.integration.service.ReservationStationService;
 import org.springframework.http.HttpStatus;
@@ -22,7 +23,7 @@ public class ReservationStationController {
     private ReservationStationService reservationStationService;
 
 
-    @RequestMapping(method = RequestMethod.POST, value="/reservations_station", produces={MediaType.APPLICATION_JSON_VALUE}, consumes={MediaType.APPLICATION_JSON_VALUE})
+    @RequestMapping(method = RequestMethod.POST, value="/stations/reservations", produces={MediaType.APPLICATION_JSON_VALUE}, consumes={MediaType.APPLICATION_JSON_VALUE})
     @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
     public ResponseEntity<ReservationStation> create(@RequestBody ReservationStation res) {
         try{
@@ -33,14 +34,26 @@ public class ReservationStationController {
         }
     }
 
-    @RequestMapping(method = RequestMethod.GET, value="/reservations_station")
+    @RequestMapping(method = RequestMethod.GET, value="/stations/reservations")
     @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
     public List<ReservationStation> get() { return reservationStationService.getAll(); }
 
-    @DeleteMapping("/reservations_station/{id}")
+    @DeleteMapping("stations/reservations/{id}")
     @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
     public void deleteStudent(@PathVariable Integer id) {
         Optional<ReservationStation> resStation = reservationStationService.findById(id);
         reservationStationService.delete(resStation.get());
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value="/stations/{id}/reservations")
+    @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
+    public List<ReservationStation> findByStation(@PathVariable(value="id") Integer idStation) {
+        return reservationStationService.findByStation(idStation);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value="/users/{id}/stations/reservations")
+    @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
+    public List<ReservationStation> findByUser(@PathVariable(value="id") Integer idUser) {
+        return reservationStationService.findByUser(idUser);
     }
 }

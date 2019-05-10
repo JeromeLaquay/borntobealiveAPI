@@ -30,5 +30,11 @@ public class ReservationCarService {
         return reservationCarRepository.findById(id);
     }
 
+    public List<ReservationCar> findByCar(Integer idCar) {
+        return reservationCarRepository.findByCar(idCar);
+    }
 
+    public List<ReservationCar> findByUser(Integer idUser) {
+        return reservationCarRepository.findByUser(idUser);
+    }
 }

@@ -22,7 +22,7 @@ public class ReservationCarController {
     private ReservationCarService reservationCarService;
 
 
-    @RequestMapping(method = RequestMethod.POST, value="/reservations_car", produces={MediaType.APPLICATION_JSON_VALUE}, consumes={MediaType.APPLICATION_JSON_VALUE})
+    @RequestMapping(method = RequestMethod.POST, value="cars/reservations", produces={MediaType.APPLICATION_JSON_VALUE}, consumes={MediaType.APPLICATION_JSON_VALUE})
     @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
     public ResponseEntity<ReservationCar> create(@RequestBody ReservationCar res) {
         try{
@@ -33,15 +33,26 @@ public class ReservationCarController {
         }
     }
 
-    @RequestMapping(method = RequestMethod.GET, value="/reservations_car")
+    @RequestMapping(method = RequestMethod.GET, value="/cars/reservations")
     @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
     public List<ReservationCar> get() { return reservationCarService.getAll(); }
 
-    @DeleteMapping("/reservations_car/{id}")
+    @DeleteMapping("/cars/reservations/{id}")
     @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
-    public void deleteStudent(@PathVariable Integer id) {
+    public void delete(@PathVariable Integer id) {
         Optional<ReservationCar> resCar = reservationCarService.findById(id);
         reservationCarService.delete(resCar.get());
     }
 
+    @RequestMapping(method = RequestMethod.GET, value="/cars/{id}/reservations")
+    @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
+    public List<ReservationCar> findByCar(@PathVariable(value="id") Integer idCar) {
+        return reservationCarService.findByCar(idCar);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value="/users/{id}/cars/reservations")
+    @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
+    public List<ReservationCar> findByUser(@PathVariable(value="id") Integer idUser) {
+        return reservationCarService.findByUser(idUser);
+    }
 }

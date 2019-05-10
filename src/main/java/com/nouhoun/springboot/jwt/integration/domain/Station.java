@@ -14,7 +14,6 @@ public class Station {
     private String name;
     private String power;
     private String marque;
-    private boolean free;
     private String organisation;
 
     @JsonIgnore
@@ -55,14 +54,6 @@ public class Station {
 
     public void setMarque(String marque) {
         this.marque = marque;
-    }
-
-    public boolean isFree() {
-        return free;
-    }
-
-    public void setFree(boolean free) {
-        this.free = free;
     }
 
     public String getOrganisation() {

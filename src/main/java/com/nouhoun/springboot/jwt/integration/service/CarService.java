@@ -25,4 +25,6 @@ public class CarService {
         return carRepository.findAll();
     }
 
+    public List<Car> findByUser(Integer idUser){return carRepository.findByUser(idUser);}
+
 }

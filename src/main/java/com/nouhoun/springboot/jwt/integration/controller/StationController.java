@@ -35,4 +35,8 @@ public class StationController {
     @RequestMapping(method = RequestMethod.GET, value="/stations")
     @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
     public List<Station> get() { return stationService.getAll(); }
+
+    @RequestMapping(method = RequestMethod.GET, value="/stations/free")
+    @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
+    public List<Station> findFreeStations() { return stationService.findFreeStations(); }
 }

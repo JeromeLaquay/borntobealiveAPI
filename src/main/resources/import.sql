@@ -22,12 +22,16 @@ INSERT INTO random_city(id, name) VALUES (6, 'Mopti');
 INSERT INTO random_city(id, name) VALUES (7, 'Koulikoro');
 INSERT INTO random_city(id, name) VALUES (8, 'Moscow');
 
+insert into station (id,name,power,marque, organisation) values (1,'rizomm 1',22, 'G2Mobility', 'la catho');
+insert into station (id,name,power,marque, organisation) values (2,'rizomm 2',22, 'G2Mobility', 'la catho');
+
+insert into car (id,marque, modele,personal, autonomy,power_max,organisation, user_id, station_id) values (1,'renault','zoe',true,50,24,null,1,1);
+insert into car (id,marque, modele,personal, autonomy,power_max,organisation, user_id) values (2,'tesla','model S',true,50,24,null,2);
 
 
-insert into car (id,marque, modele,personal, autonomy,power_max,organisation) values (1,'renault','zoe',true,50,24,null);
 
-insert into station (id,name,power,marque,free, organisation) values (1,'rizomm 1',22, 'G2Mobility',true, 'la catho');
+insert into reservation_car(id,date_start,date_end,user_id,car_id) values(1,'2019-06-01 10:00:00','2019-06-11 14:00:00' ,1,1);
+insert into reservation_car(id,date_start,date_end,user_id,car_id) values(2,'2019-06-01 10:00:00','2019-06-11 14:00:00' ,1,2);
 
-insert into reservation_car(id,date_start,date_end,user_id,car_id) values(1,'2019-06-01 10:00:00','2019-06-11 14:00:00' ,1,1)
-
-insert into reservation_station(id,date_start,date_end,user_id,station_id) values(1,'2019-06-01 10:00:00','2019-06-11 14:00:00' ,1,1)
+insert into reservation_station(id,date_start,date_end,user_id,station_id) values(1,'2019-06-01 10:00:00','2019-06-11 14:00:00' ,1,1);
+insert into reservation_station(id,date_start,date_end,user_id,station_id) values(2,'2019-06-01 10:00:00','2019-06-11 14:00:00' ,1,2);

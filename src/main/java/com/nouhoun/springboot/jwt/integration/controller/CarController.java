@@ -37,4 +37,10 @@ public class CarController {
     public List<Car> get() {
         return carService.getAll();
     }
+
+    @RequestMapping(method = RequestMethod.GET, value="/users/{id}/cars")
+    @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
+    public List<Car> findByUser(@PathVariable(value="id") Integer idUser) {
+        return carService.findByUser(idUser);
+    }
 }

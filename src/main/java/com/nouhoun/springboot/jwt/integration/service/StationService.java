@@ -24,4 +24,8 @@ public class StationService {
     public List<Station> getAll() {
         return stationRepository.findAll();
     }
+
+    public List<Station> findFreeStations(){
+        return stationRepository.findFreeStations();
+    }
 }

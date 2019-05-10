@@ -22,7 +22,6 @@ public class Car {
     @OneToOne
     private Station station;
 
-    @JsonIgnore
     @ManyToOne
     private User user;
 

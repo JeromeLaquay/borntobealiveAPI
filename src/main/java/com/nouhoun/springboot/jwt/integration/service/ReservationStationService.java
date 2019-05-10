@@ -1,6 +1,7 @@
 package com.nouhoun.springboot.jwt.integration.service;
 
 
+import com.nouhoun.springboot.jwt.integration.domain.ReservationCar;
 import com.nouhoun.springboot.jwt.integration.domain.ReservationStation;
 import com.nouhoun.springboot.jwt.integration.repository.ReservationStationRepository;
 import org.springframework.stereotype.Service;
@@ -31,4 +32,11 @@ public class ReservationStationService {
         return reservationStationRepository.findById(id);
     }
 
+    public List<ReservationStation> findByStation(Integer idStation) {
+        return reservationStationRepository.findByStation(idStation);
+    }
+
+    public List<ReservationStation> findByUser(Integer idUser) {
+        return reservationStationRepository.findByUser(idUser);
+    }
 }
