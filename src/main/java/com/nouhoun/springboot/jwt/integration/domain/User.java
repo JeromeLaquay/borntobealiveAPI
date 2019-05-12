@@ -5,9 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.util.List;
 
-/**
- * Created by nydiarra on 06/05/17.
- */
 @Entity
 @Table(name = "app_user")
 public class User {
