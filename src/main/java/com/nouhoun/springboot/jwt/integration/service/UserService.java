@@ -22,4 +22,16 @@ public class UserService {
     public User createOrUpdate(User user) {
         return userRepository.saveAndFlush(user);
     }
+
+    public boolean existingUsername(String username){
+            User user = userRepository.findByUsername(username);
+            if(user != null && user.getUsername() != null && user.getUsername() != ""){
+                return true;
+            }
+        return false;
+    }
+
+    public User findByUsername(String username){
+        return userRepository.findByUsername(username);
+    }
 }

@@ -39,8 +39,9 @@ public class SwaggerConfig {
         List<SecurityScheme> schemeList = new ArrayList<>();
         schemeList.add(securitySchema());
         return new Docket(DocumentationType.SWAGGER_2)
-                .select()
-                .apis(RequestHandlerSelectors.basePackage("com.nouhoun.springboot.jwt.integration.controller"))
+                .select()/*
+                .apis(RequestHandlerSelectors.basePackage("com.nouhoun.springboot.jwt.integration.controller"))*/
+                .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.any())
                 .build()
                 .securitySchemes(schemeList)

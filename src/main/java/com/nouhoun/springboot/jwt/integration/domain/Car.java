@@ -13,7 +13,6 @@ public class Car {
     private Integer id;
     private String modele; // Zoe, Model S,
     private String marque; // Renault, Tesla, BMW
-    private boolean personal; // if personal = true, if yncrea, catho ... = false
     private Integer autonomy; // percentage
     private Integer power_max; // en KW/h
     private String organisation; // La catho, Yncrea ...
@@ -52,14 +51,6 @@ public class Car {
 
     public void setModele(String modele) {
         this.modele = modele;
-    }
-
-    public boolean isPersonal() {
-        return personal;
-    }
-
-    public void setPersonal(boolean personal) {
-        this.personal = personal;
     }
 
     public Integer getAutonomy() {

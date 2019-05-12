@@ -26,9 +26,9 @@ public class ResourceController {
         return userService.findAllRandomCities();
     }
 
-    @RequestMapping(value ="/users", method = RequestMethod.GET)
+/*    @RequestMapping(value ="/users", method = RequestMethod.GET)
     @PreAuthorize("hasAuthority('ADMIN_USER')")
     public List<User> getUsers(){
         return userService.findAllUsers();
-    }
+    }*/
 }
