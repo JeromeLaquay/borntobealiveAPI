@@ -29,10 +29,14 @@ insert into car (id,marque, modele, autonomy,power_max,organisation, user_id, st
 insert into car (id,marque, modele, autonomy,power_max,organisation, user_id) values (2,'tesla','model S',50,24,null,2);
 insert into car (id,marque, modele, autonomy,power_max,organisation, user_id) values (3,'BMW','i5',50,24,'la catho',null);
 
+insert into reservation_car(id,date_start,date_end,user_id,car_id) values(1,'2019-06-01 10:00:00','2019-06-01 12:00:00' ,1,1);
+insert into reservation_car(id,date_start,date_end,user_id,car_id) values(2,'2019-06-01 15:00:00','2019-06-01 18:00:00' ,1,1);
 
-
-insert into reservation_car(id,date_start,date_end,user_id,car_id) values(1,'2019-06-01 10:00:00','2019-06-11 14:00:00' ,1,1);
-insert into reservation_car(id,date_start,date_end,user_id,car_id) values(2,'2019-06-01 10:00:00','2019-06-11 14:00:00' ,1,2);
+insert into reservation_car(id,date_start,date_end,user_id,car_id) values(1,'2019-06-01 11:00:00','2019-06-01 13:00:00' ,2,2);
+insert into reservation_car(id,date_start,date_end,user_id,car_id) values(2,'2019-06-01 16:00:00','2019-06-01 19:00:00' ,2,2);
 
 insert into reservation_station(id,date_start,date_end,user_id,station_id) values(1,'2019-06-01 10:00:00','2019-06-11 14:00:00' ,1,1);
-insert into reservation_station(id,date_start,date_end,user_id,station_id) values(2,'2019-06-01 10:00:00','2019-06-11 14:00:00' ,1,2);
+insert into reservation_station(id,date_start,date_end,user_id,station_id) values(2,'2019-06-01 10:00:00','2019-06-11 14:00:00' ,1,1);
+
+insert into reservation_station(id,date_start,date_end,user_id,station_id) values(1,'2019-06-01 10:00:00','2019-06-11 14:00:00' ,2,2);
+insert into reservation_station(id,date_start,date_end,user_id,station_id) values(2,'2019-06-01 10:00:00','2019-06-11 14:00:00' ,2,2);

@@ -6,6 +6,7 @@ import com.nouhoun.springboot.jwt.integration.domain.ReservationStation;
 import com.nouhoun.springboot.jwt.integration.repository.ReservationStationRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,5 +39,9 @@ public class ReservationStationService {
 
     public List<ReservationStation> findByUser(Integer idUser) {
         return reservationStationRepository.findByUser(idUser);
+    }
+
+    public boolean existingReservationWithinPeriod(Integer idStation, Date dateStart, Date dateEnd){
+        return reservationStationRepository.findWithinPeriod(idStation,dateStart,dateEnd).isEmpty() ? false : true;
     }
 }

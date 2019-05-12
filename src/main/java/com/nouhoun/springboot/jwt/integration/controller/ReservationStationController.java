@@ -56,4 +56,9 @@ public class ReservationStationController {
     public List<ReservationStation> findByUser(@PathVariable(value="id") Integer idUser) {
         return reservationStationService.findByUser(idUser);
     }
+
+    @RequestMapping(method = RequestMethod.GET, value="/stations/{id}/reservations/existing")
+    public boolean existingReservationWithinPeriod(@PathVariable(value="id") Integer idStation, @RequestBody ReservationCar resStation) {
+        return reservationStationService.existingReservationWithinPeriod(idStation, resStation.getDate_start(), resStation.getDate_end());
+    }
 }

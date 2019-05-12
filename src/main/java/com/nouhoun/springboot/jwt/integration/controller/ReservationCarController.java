@@ -2,12 +2,14 @@ package com.nouhoun.springboot.jwt.integration.controller;
 
 import com.nouhoun.springboot.jwt.integration.domain.ReservationCar;
 import com.nouhoun.springboot.jwt.integration.service.ReservationCarService;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,5 +56,10 @@ public class ReservationCarController {
     @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
     public List<ReservationCar> findByUser(@PathVariable(value="id") Integer idUser) {
         return reservationCarService.findByUser(idUser);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value="/cars/{id}/reservations/existing")
+    public boolean existingReservationWithinPeriod(@PathVariable(value="id") Integer idCar, @RequestBody ReservationCar resCaar) {
+        return reservationCarService.existingReservationWithinPeriod(idCar, resCaar.getDate_start(), resCaar.getDate_end());
     }
 }
