@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/springjwt")
+@RequestMapping("/api")
 public class ReservationStationController {
 
     public ReservationStationController(ReservationStationService reservationStationService) {
@@ -58,7 +58,7 @@ public class ReservationStationController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value="/stations/{id}/reservations/existing")
-    public boolean existingReservationWithinPeriod(@PathVariable(value="id") Integer idStation, @RequestBody ReservationCar resStation) {
+    public boolean existingReservationWithinPeriod(@PathVariable(value="id") Integer idStation, @RequestBody ReservationStation resStation) {
         return reservationStationService.existingReservationWithinPeriod(idStation, resStation.getDate_start(), resStation.getDate_end());
     }
 }

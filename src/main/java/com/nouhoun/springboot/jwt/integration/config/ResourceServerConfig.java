@@ -29,7 +29,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .requestMatchers()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/actuator/**", "/api-docs/**","/springjwt/register","/oauth/**","/springjwt/users/existing**").permitAll()
-                .antMatchers("/springjwt/**" ).authenticated();
+                .antMatchers("/actuator/**", "/api-docs/**","/api/register","/oauth/**","/api/users/existing**").permitAll()
+                .antMatchers("/api/**" ).authenticated();
     }
 }

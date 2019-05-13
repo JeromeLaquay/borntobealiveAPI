@@ -15,7 +15,7 @@ import java.util.List;
  * Created by nydiarra on 06/05/17.
  */
 @RestController
-@RequestMapping("/springjwt")
+@RequestMapping("/api")
 public class ResourceController {
     @Autowired
     private GenericService userService;

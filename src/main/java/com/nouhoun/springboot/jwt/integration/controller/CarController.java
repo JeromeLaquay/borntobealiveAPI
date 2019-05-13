@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/springjwt")
+@RequestMapping("/api")
 public class CarController {
 
     public CarController(CarService carService) {
@@ -42,5 +42,11 @@ public class CarController {
     @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
     public List<Car> findByUser(@PathVariable(value="id") Integer idUser) {
         return carService.findByUser(idUser);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value="/cars/without_user")
+    @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
+    public List<Car> findWithoutUser() {
+        return carService.findWithoutUser();
     }
 }

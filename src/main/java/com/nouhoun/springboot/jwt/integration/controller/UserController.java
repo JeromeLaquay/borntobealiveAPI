@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/springjwt")
+@RequestMapping("/api")
 public class UserController {
 
     public UserController(UserService userService) {

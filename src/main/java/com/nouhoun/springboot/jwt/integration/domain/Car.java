@@ -13,6 +13,7 @@ public class Car {
     private Integer id;
     private String modele; // Zoe, Model S,
     private String marque; // Renault, Tesla, BMW
+    private String immatriculation;
     private Integer autonomy; // percentage
     private Integer power_max; // en KW/h
     private String organisation; // La catho, Yncrea ...
@@ -99,5 +100,13 @@ public class Car {
 
     public void setOrganisation(String organisation) {
         this.organisation = organisation;
+    }
+
+    public String getImmatriculation() {
+        return immatriculation;
+    }
+
+    public void setImmatriculation(String immatriculation) {
+        this.immatriculation = immatriculation;
     }
 }

@@ -27,4 +27,6 @@ public class CarService {
 
     public List<Car> findByUser(Integer idUser){return carRepository.findByUser(idUser);}
 
+    public List<Car> findWithoutUser(){return carRepository.findWithoutUser();}
+
 }
