@@ -58,7 +58,10 @@ public class ReservationStationController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value="/stations/{id}/reservations/existing")
+    @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
     public boolean existingReservationWithinPeriod(@PathVariable(value="id") Integer idStation, @RequestBody ReservationStation resStation) {
-        return reservationStationService.existingReservationWithinPeriod(idStation, resStation.getDate_start(), resStation.getDate_end());
+        return reservationStationService.existingReservationWithinPeriodForStation(idStation, resStation.getDate_start(), resStation.getDate_end());
     }
+
+
 }

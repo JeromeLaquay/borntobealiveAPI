@@ -2,12 +2,14 @@ package com.nouhoun.springboot.jwt.integration.controller;
 
 import com.nouhoun.springboot.jwt.integration.domain.Car;
 import com.nouhoun.springboot.jwt.integration.service.CarService;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -48,5 +50,12 @@ public class CarController {
     @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
     public List<Car> findWithoutUser() {
         return carService.findWithoutUser();
+    }
+
+
+    @RequestMapping(method = RequestMethod.GET, value="/cars/free")
+    @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
+    public List<Car> getAllCarsFreeWithinPeriod(@Param("date_start") Date date_start , @Param("date_end") Date date_end) {
+        return carService.getAllCarsFreeWithinPeriod(date_start,date_end);
     }
 }

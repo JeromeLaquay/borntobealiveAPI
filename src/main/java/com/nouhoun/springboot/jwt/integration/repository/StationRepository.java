@@ -12,6 +12,4 @@ import java.util.List;
 @Repository
 public interface StationRepository extends JpaRepository<Station, Integer> {
 
-    @Query(value="SELECT s FROM Station s where s.car.id = null")
-    List<Station> findFreeStations();
 }

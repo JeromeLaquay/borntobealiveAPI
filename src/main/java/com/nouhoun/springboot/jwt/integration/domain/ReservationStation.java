@@ -20,6 +20,9 @@ public class ReservationStation {
     @ManyToOne
     private Station station;
 
+    @ManyToOne
+    private Car car;
+
     public Integer getId() {
         return id;
     }
@@ -58,5 +61,13 @@ public class ReservationStation {
 
     public void setStation(Station station) {
         this.station = station;
+    }
+
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
     }
 }

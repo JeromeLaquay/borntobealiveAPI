@@ -41,7 +41,11 @@ public class ReservationStationService {
         return reservationStationRepository.findByUser(idUser);
     }
 
-    public boolean existingReservationWithinPeriod(Integer idStation, Date dateStart, Date dateEnd){
-        return reservationStationRepository.findWithinPeriod(idStation,dateStart,dateEnd).isEmpty() ? false : true;
+    public boolean existingReservationWithinPeriodForStation(Integer idStation, Date dateStart, Date dateEnd){
+        return reservationStationRepository.findWithinPeriodForStation(idStation,dateStart,dateEnd).isEmpty() ? false : true;
+    }
+
+    public boolean existingReservationWithinPeriodForCar(Integer idCar, Date dateStart, Date dateEnd){
+        return reservationStationRepository.findWithinPeriodForCar(idCar,dateStart,dateEnd).isEmpty() ? false : true;
     }
 }

@@ -20,5 +20,8 @@ public interface ReservationStationRepository extends JpaRepository<ReservationS
     List<ReservationStation> findByUser(@Param("id")Integer idUser);
 
     @Query(value="SELECT t.id, t.date_start, t.date_end FROM ReservationStation AS t WHERE  t.station.id = :id AND t.date_start < :date_end AND t.date_end > :date_start GROUP BY t.id, t.date_start, t.date_end")
-    List<ReservationCar> findWithinPeriod(@Param("id") Integer idStation, @Param("date_start") Date dateStart, @Param("date_end") Date dateEnd);
+    List<ReservationStation> findWithinPeriodForStation(@Param("id") Integer idStation, @Param("date_start") Date dateStart, @Param("date_end") Date dateEnd);
+
+    @Query(value="SELECT t.id, t.date_start, t.date_end FROM ReservationStation AS t WHERE  t.car.id = :id AND t.date_start < :date_end AND t.date_end > :date_start GROUP BY t.id, t.date_start, t.date_end")
+    List<ReservationStation> findWithinPeriodForCar(@Param("id") Integer idCar, @Param("date_start") Date dateStart, @Param("date_end") Date dateEnd);
 }

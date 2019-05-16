@@ -1,5 +1,6 @@
 package com.nouhoun.springboot.jwt.integration.controller;
 
+import com.nouhoun.springboot.jwt.integration.domain.ReservationStation;
 import com.nouhoun.springboot.jwt.integration.domain.Station;
 import com.nouhoun.springboot.jwt.integration.service.StationService;
 import org.springframework.http.HttpStatus;
@@ -38,5 +39,7 @@ public class StationController {
 
     @RequestMapping(method = RequestMethod.GET, value="/stations/free")
     @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
-    public List<Station> findFreeStations() { return stationService.findFreeStations(); }
+    public List<Station> getAllStationsFreeWithinPeriod(@RequestBody ReservationStation resStation) {
+        return stationService.getAllStationsFreeWithinPeriod( resStation.getDate_start(), resStation.getDate_end());
+    }
 }

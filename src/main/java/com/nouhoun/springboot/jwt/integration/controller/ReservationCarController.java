@@ -24,7 +24,7 @@ public class ReservationCarController {
     private ReservationCarService reservationCarService;
 
 
-    @RequestMapping(method = RequestMethod.POST, value="cars/reservations", produces={MediaType.APPLICATION_JSON_VALUE}, consumes={MediaType.APPLICATION_JSON_VALUE})
+    @RequestMapping(method = RequestMethod.POST, value="/cars/reservations", produces={MediaType.APPLICATION_JSON_VALUE}, consumes={MediaType.APPLICATION_JSON_VALUE})
     @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
     public ResponseEntity<ReservationCar> create(@RequestBody ReservationCar res) {
         try{
