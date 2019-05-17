@@ -3,12 +3,14 @@ package com.nouhoun.springboot.jwt.integration.controller;
 import com.nouhoun.springboot.jwt.integration.domain.ReservationCar;
 import com.nouhoun.springboot.jwt.integration.domain.ReservationStation;
 import com.nouhoun.springboot.jwt.integration.service.ReservationStationService;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -59,8 +61,8 @@ public class ReservationStationController {
 
     @RequestMapping(method = RequestMethod.GET, value="/stations/{id}/reservations/existing")
     @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
-    public boolean existingReservationWithinPeriod(@PathVariable(value="id") Integer idStation, @RequestBody ReservationStation resStation) {
-        return reservationStationService.existingReservationWithinPeriodForStation(idStation, resStation.getDate_start(), resStation.getDate_end());
+    public boolean existingReservationWithinPeriod(@PathVariable(value="id") Integer idStation, @Param("date_start") Date date_start , @Param("date_end") Date date_end) {
+        return reservationStationService.existingReservationWithinPeriodForStation(idStation, date_start, date_end);
     }
 
 

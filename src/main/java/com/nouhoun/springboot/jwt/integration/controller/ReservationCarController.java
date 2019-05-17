@@ -59,7 +59,7 @@ public class ReservationCarController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value="/cars/{id}/reservations/existing")
-    public boolean existingReservationWithinPeriod(@PathVariable(value="id") Integer idCar, @RequestBody ReservationCar resCaar) {
-        return reservationCarService.existingReservationWithinPeriod(idCar, resCaar.getDate_start(), resCaar.getDate_end());
+    public boolean existingReservationWithinPeriod(@PathVariable(value="id") Integer idCar, @Param("date_start") Date date_start , @Param("date_end") Date date_end) {
+        return reservationCarService.existingReservationWithinPeriod(idCar, date_start, date_end);
     }
 }

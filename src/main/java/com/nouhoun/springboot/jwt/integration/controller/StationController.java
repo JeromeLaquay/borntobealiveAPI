@@ -3,12 +3,14 @@ package com.nouhoun.springboot.jwt.integration.controller;
 import com.nouhoun.springboot.jwt.integration.domain.ReservationStation;
 import com.nouhoun.springboot.jwt.integration.domain.Station;
 import com.nouhoun.springboot.jwt.integration.service.StationService;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -39,7 +41,7 @@ public class StationController {
 
     @RequestMapping(method = RequestMethod.GET, value="/stations/free")
     @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
-    public List<Station> getAllStationsFreeWithinPeriod(@RequestBody ReservationStation resStation) {
-        return stationService.getAllStationsFreeWithinPeriod( resStation.getDate_start(), resStation.getDate_end());
+    public List<Station> getAllStationsFreeWithinPeriod(@Param("date_start") Date date_start , @Param("date_end") Date date_end) {
+        return stationService.getAllStationsFreeWithinPeriod( date_start, date_end);
     }
 }
