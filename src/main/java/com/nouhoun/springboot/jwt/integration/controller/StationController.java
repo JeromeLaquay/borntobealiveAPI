@@ -1,5 +1,6 @@
 package com.nouhoun.springboot.jwt.integration.controller;
 
+import com.nouhoun.springboot.jwt.integration.config.DateUtil;
 import com.nouhoun.springboot.jwt.integration.domain.ReservationStation;
 import com.nouhoun.springboot.jwt.integration.domain.Station;
 import com.nouhoun.springboot.jwt.integration.service.StationService;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
@@ -41,7 +43,7 @@ public class StationController {
 
     @RequestMapping(method = RequestMethod.GET, value="/stations/free")
     @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
-    public List<Station> getAllStationsFreeWithinPeriod(@Param("date_start") Date date_start , @Param("date_end") Date date_end) {
-        return stationService.getAllStationsFreeWithinPeriod( date_start, date_end);
+    public List<Station> getAllStationsFreeWithinPeriod(@Param("date_start") String date_start , @Param("date_end") String date_end) throws ParseException {
+        return stationService.getAllStationsFreeWithinPeriod( DateUtil.stringToDate(date_start),DateUtil.stringToDate(date_end));
     }
 }
