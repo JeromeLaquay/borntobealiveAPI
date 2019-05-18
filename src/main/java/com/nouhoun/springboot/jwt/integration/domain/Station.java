@@ -17,10 +17,6 @@ public class Station {
     private String organisation;
 
     @JsonIgnore
-    @OneToOne
-    private Car car;
-
-    @JsonIgnore
     @OneToMany(mappedBy="station")
     private List<ReservationStation> reservationStationList;
 
@@ -62,14 +58,6 @@ public class Station {
 
     public void setOrganisation(String organisation) {
         this.organisation = organisation;
-    }
-
-    public Car getCar() {
-        return car;
-    }
-
-    public void setCar(Car car) {
-        this.car = car;
     }
 
     public List<ReservationStation> getReservationStationList() {

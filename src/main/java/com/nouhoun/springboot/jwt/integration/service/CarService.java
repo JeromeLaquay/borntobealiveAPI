@@ -39,6 +39,8 @@ public class CarService {
 
     public List<Car> findWithoutUser(){return carRepository.findWithoutUser();}
 
+    public Car findByImmatriculation(String immatriculation){ return carRepository.findbyImmatriculation(immatriculation);}
+
     public List<Car> getAllCarsFreeWithinPeriod(Date date_start, Date date_end){
         List<Car> carsFree = new ArrayList<>();
         List<Car> cars = carRepository.findAll();

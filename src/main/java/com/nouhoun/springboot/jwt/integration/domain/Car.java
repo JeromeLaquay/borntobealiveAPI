@@ -14,13 +14,9 @@ public class Car {
     private String modele; // Zoe, Model S,
     private String marque; // Renault, Tesla, BMW
     private String immatriculation;
-    private Integer autonomy; // percentage
     private Integer power_max; // en KW/h
+    private Integer km_max;
     private String organisation; // La catho, Yncrea ...
-
-    @JsonIgnore
-    @OneToOne
-    private Station station;
 
     @ManyToOne
     private User user;
@@ -54,28 +50,12 @@ public class Car {
         this.modele = modele;
     }
 
-    public Integer getAutonomy() {
-        return autonomy;
-    }
-
-    public void setAutonomy(Integer autonomy) {
-        this.autonomy = autonomy;
-    }
-
     public Integer getPower_max() {
         return power_max;
     }
 
     public void setPower_max(Integer power_max) {
         this.power_max = power_max;
-    }
-
-    public Station getStation() {
-        return station;
-    }
-
-    public void setStation(Station station) {
-        this.station = station;
     }
 
     public User getUser() {

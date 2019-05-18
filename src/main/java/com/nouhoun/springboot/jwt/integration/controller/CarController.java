@@ -55,6 +55,11 @@ public class CarController {
         return carService.findWithoutUser();
     }
 
+    @RequestMapping(method = RequestMethod.GET, value="/cars/immatriculation")
+    @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
+    public Car findWithoutUser(@RequestParam("immatriculation") String immatriculation ) {
+        return carService.findByImmatriculation(immatriculation);
+    }
 
     @RequestMapping(method = RequestMethod.GET, value="/cars/free")
     @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")

@@ -17,4 +17,7 @@ public interface CarRepository extends JpaRepository<Car, Integer> {
     @Query(value="SELECT c FROM Car c, User a where c.user.id is null")
     List<Car> findWithoutUser();
 
+    @Query(value="SELECT c FROM Car c where c.immatriculation= :immatriculation")
+    Car findbyImmatriculation(@Param("immatriculation")String immatriculation);
+
 }
