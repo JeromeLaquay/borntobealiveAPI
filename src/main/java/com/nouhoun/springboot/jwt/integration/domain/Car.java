@@ -89,4 +89,12 @@ public class Car {
     public void setImmatriculation(String immatriculation) {
         this.immatriculation = immatriculation;
     }
+
+    public Integer getKm_max() {
+        return km_max;
+    }
+
+    public void setKm_max(Integer km_max) {
+        this.km_max = km_max;
+    }
 }
