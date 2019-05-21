@@ -3,8 +3,6 @@ package com.nouhoun.springboot.jwt.integration.controller;
 import com.nouhoun.springboot.jwt.integration.config.DateUtil;
 import com.nouhoun.springboot.jwt.integration.domain.Car;
 import com.nouhoun.springboot.jwt.integration.service.CarService;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +10,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
-import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -28,12 +25,12 @@ public class CarController {
 
     @RequestMapping(method = RequestMethod.POST, value="/cars", produces={MediaType.APPLICATION_JSON_VALUE}, consumes={MediaType.APPLICATION_JSON_VALUE})
     @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
-    public ResponseEntity<Car> create(@RequestBody Car car) {
+    public Car create(@RequestBody Car car) {
         try{
             Car car2 = carService.createOrUpdate(car);
-            return new ResponseEntity<>(car2, HttpStatus.OK);
+            return car2;
         }catch(Exception e){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return null;
         }
     }
 

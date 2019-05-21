@@ -28,12 +28,12 @@ public class ReservationCarController {
 
     @RequestMapping(method = RequestMethod.POST, value="/cars/reservations", produces={MediaType.APPLICATION_JSON_VALUE}, consumes={MediaType.APPLICATION_JSON_VALUE})
     @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
-    public ResponseEntity<ReservationCar> create(@RequestBody ReservationCar res) {
+    public ReservationCar create(@RequestBody ReservationCar res) {
         try{
             ReservationCar res2 = reservationCarService.createOrUpdate(res);
-            return new ResponseEntity<>(res2, HttpStatus.OK);
+            return res2;
         }catch(Exception e){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return null;
         }
     }
 

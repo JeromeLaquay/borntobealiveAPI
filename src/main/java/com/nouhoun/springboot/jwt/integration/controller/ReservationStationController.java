@@ -29,12 +29,12 @@ public class ReservationStationController {
 
     @RequestMapping(method = RequestMethod.POST, value="/stations/reservations", produces={MediaType.APPLICATION_JSON_VALUE}, consumes={MediaType.APPLICATION_JSON_VALUE})
     @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
-    public ResponseEntity<ReservationStation> create(@RequestBody ReservationStation res) {
+    public ReservationStation create(@RequestBody ReservationStation res) {
         try{
             ReservationStation res2 = reservationStationService.createOrUpdate(res);
-            return new ResponseEntity<>(res2, HttpStatus.OK);
+            return res2;
         }catch(Exception e){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return null;
         }
     }
 

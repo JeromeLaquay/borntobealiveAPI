@@ -28,12 +28,12 @@ public class StationController {
 
     @RequestMapping(method = RequestMethod.POST, value="/stations", produces={MediaType.APPLICATION_JSON_VALUE}, consumes={MediaType.APPLICATION_JSON_VALUE})
     @PreAuthorize("hasAuthority('ADMIN_USER')")
-    public ResponseEntity<Station> create(@RequestBody Station station) {
+    public Station create(@RequestBody Station station) {
         try{
             Station station2 = stationService.createOrUpdate(station);
-            return new ResponseEntity<>(station2, HttpStatus.OK);
+            return station2;
         }catch(Exception e){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return null;
         }
     }
 
