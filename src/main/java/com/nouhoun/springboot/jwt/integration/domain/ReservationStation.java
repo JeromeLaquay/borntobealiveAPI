@@ -1,6 +1,10 @@
 package com.nouhoun.springboot.jwt.integration.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -9,13 +13,15 @@ public class ReservationStation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Date date_start;
-    private Date date_end;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-ddTHH:mm:ss.SSSZ")
+    private Date date_start;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-ddTHH:mm:ss.SSSZ")
+    private Date date_end;
 
     @ManyToOne
     private User user;
-
 
     @ManyToOne
     private Station station;

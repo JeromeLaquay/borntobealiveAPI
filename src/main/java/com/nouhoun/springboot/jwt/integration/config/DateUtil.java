@@ -6,9 +6,11 @@ import java.text.ParseException;
 
 public class DateUtil {
 
-    public static Date stringToDate( String dateString) throws ParseException {
+/*    public static Date stringToDate( String dateString) throws ParseException {
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return formatter.parse(dateString);
-    }
+    }*/
+
+    /*yyyy-MM-dd'T'HH:mm:ss.SSSZ*/
 }

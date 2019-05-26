@@ -1,5 +1,7 @@
 package com.nouhoun.springboot.jwt.integration.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -9,7 +11,10 @@ public class ReservationCar {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private Date date_start;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private Date date_end;
 
 
@@ -31,7 +36,6 @@ public class ReservationCar {
     public Date getDate_start() {
         return date_start;
     }
-
     public void setDate_start(Date date_start) {
         this.date_start = date_start;
     }

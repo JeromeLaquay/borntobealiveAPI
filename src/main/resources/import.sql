@@ -21,7 +21,7 @@ insert into station (id,name,power,marque, organisation) values (4,'yncrea 2',7.
 insert into car (id,marque, modele, immatriculation, power_max,organisation, km_max, user_id) values (1,'Renault','Zoé','CD-325-ZE',24,null, 150,1);
 insert into car (id,marque, modele, immatriculation, power_max,organisation, km_max, user_id) values (2,'Tesla','model_S','AJ-672-BZ',150,null,800,2);
 insert into car (id,marque, modele, immatriculation, power_max,organisation, km_max, user_id) values (3,'BMW','i5','AZ-999-NB',100,'la catho',600,null);
-insert into car (id,marque, modele, immatriculation, power_max,organisation, km_max, user_id) values (3,'Renault','Zoé','WZ-113-HG',100,'yncrea',600,null);
+insert into car (id,marque, modele, immatriculation, power_max,organisation, km_max, user_id) values (4,'Renault','Zoé','WZ-113-HG',24,'yncrea',150,null);
 
 insert into reservation_car(id,date_start,date_end,user_id,car_id) values(1,'2019-07-01 10:00:00','2019-07-01 12:00:00' ,1,1);
 insert into reservation_car(id,date_start,date_end,user_id,car_id) values(2,'2019-07-01 15:00:00','2019-07-01 18:00:00' ,1,1);

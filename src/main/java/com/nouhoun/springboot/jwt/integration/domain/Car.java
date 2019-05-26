@@ -21,10 +21,6 @@ public class Car {
     @ManyToOne
     private User user;
 
-    @JsonIgnore
-    @OneToMany(mappedBy="car")
-    private List<ReservationCar> reservationCarList;
-
 
     public Integer getId() {
         return id;
@@ -64,14 +60,6 @@ public class Car {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public List<ReservationCar> getReservationCarList() {
-        return reservationCarList;
-    }
-
-    public void setReservationCarList(List<ReservationCar> reservationCarList) {
-        this.reservationCarList = reservationCarList;
     }
 
     public String getOrganisation() {

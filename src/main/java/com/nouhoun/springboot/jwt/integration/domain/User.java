@@ -35,18 +35,6 @@ public class User {
 
     private String email;
 
-    @JsonIgnore
-    @OneToMany(mappedBy="user")
-    private List<Car> carList;
-
-    @JsonIgnore
-    @OneToMany(mappedBy="user")
-    private List<ReservationCar> reservationCarList;
-
-    @JsonIgnore
-    @OneToMany(mappedBy="user")
-    private List<ReservationStation> reservationStationList;
-
     /**
      * Roles are being eagerly loaded here because
      * they are a fairly small collection of items for this example.
@@ -121,30 +109,6 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public List<Car> getCarList() {
-        return carList;
-    }
-
-    public void setCarList(List<Car> carList) {
-        this.carList = carList;
-    }
-
-    public List<ReservationCar> getReservationCarList() {
-        return reservationCarList;
-    }
-
-    public void setReservationCarList(List<ReservationCar> reservationCarList) {
-        this.reservationCarList = reservationCarList;
-    }
-
-    public List<ReservationStation> getReservationStationList() {
-        return reservationStationList;
-    }
-
-    public void setReservationStationList(List<ReservationStation> reservationStationList) {
-        this.reservationStationList = reservationStationList;
     }
 
 }

@@ -11,7 +11,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
 import java.text.ParseException;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -63,8 +65,8 @@ public class ReservationStationController {
 
     @RequestMapping(method = RequestMethod.GET, value="/stations/{id}/reservations/existing")
     @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
-    public boolean existingReservationWithinPeriod(@PathVariable(value="id") Integer idStation, @Param("date_start") String date_start , @Param("date_end") String date_end) throws ParseException {
-        return reservationStationService.existingReservationWithinPeriodForStation(idStation, DateUtil.stringToDate(date_start),DateUtil.stringToDate(date_end));
+    public boolean existingReservationWithinPeriod(@PathVariable(value="id") Integer idStation, @Param("date_start") Date date_start , @Param("date_end") Date date_end) throws ParseException {
+        return reservationStationService.existingReservationWithinPeriodForStation(idStation, date_start,date_end);
     }
 
 

@@ -12,13 +12,9 @@ public class Station {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    private String power;
+    private Integer power;
     private String marque;
     private String organisation;
-
-    @JsonIgnore
-    @OneToMany(mappedBy="station")
-    private List<ReservationStation> reservationStationList;
 
     public Integer getId() {
         return id;
@@ -36,11 +32,11 @@ public class Station {
         this.name = name;
     }
 
-    public String getPower() {
+    public Integer getPower() {
         return power;
     }
 
-    public void setPower(String power) {
+    public void setPower(Integer power) {
         this.power = power;
     }
 
@@ -58,13 +54,5 @@ public class Station {
 
     public void setOrganisation(String organisation) {
         this.organisation = organisation;
-    }
-
-    public List<ReservationStation> getReservationStationList() {
-        return reservationStationList;
-    }
-
-    public void setReservationStationList(List<ReservationStation> reservationStationList) {
-        this.reservationStationList = reservationStationList;
     }
 }
