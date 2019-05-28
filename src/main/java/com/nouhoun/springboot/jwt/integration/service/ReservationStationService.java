@@ -22,7 +22,7 @@ public class ReservationStationService {
     private ReservationStationRepository reservationStationRepository;
 
     public ReservationStation createOrUpdate(ReservationStation res) {
-        return reservationStationRepository.saveAndFlush(res);
+        return reservationStationRepository.save(res);
     }
 
     public void delete(ReservationStation res){ reservationStationRepository.delete(res);}

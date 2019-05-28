@@ -1,5 +1,6 @@
 package com.nouhoun.springboot.jwt.integration.service;
 
+import com.nouhoun.springboot.jwt.integration.domain.Car;
 import com.nouhoun.springboot.jwt.integration.domain.Station;
 import com.nouhoun.springboot.jwt.integration.repository.ReservationStationRepository;
 import com.nouhoun.springboot.jwt.integration.repository.StationRepository;
@@ -42,4 +43,6 @@ public class StationService {
         }
         return stationsFree;
     }
+
+    public Station findByName(String name){ return stationRepository.findbyName(name);}
 }

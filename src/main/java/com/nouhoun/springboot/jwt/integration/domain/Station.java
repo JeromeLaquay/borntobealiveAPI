@@ -1,9 +1,6 @@
 package com.nouhoun.springboot.jwt.integration.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 public class Station {
@@ -15,6 +12,8 @@ public class Station {
     private Integer power;
     private String marque;
     private String organisation;
+    private String longitude;
+    private String latitude;
 
     public Integer getId() {
         return id;
@@ -54,5 +53,21 @@ public class Station {
 
     public void setOrganisation(String organisation) {
         this.organisation = organisation;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
     }
 }

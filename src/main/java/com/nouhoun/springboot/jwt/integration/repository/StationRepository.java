@@ -12,4 +12,6 @@ import java.util.List;
 @Repository
 public interface StationRepository extends JpaRepository<Station, Integer> {
 
+    @Query(value="SELECT s FROM Station s where s.name= :name")
+    Station findbyName(@Param("name")String name);
 }

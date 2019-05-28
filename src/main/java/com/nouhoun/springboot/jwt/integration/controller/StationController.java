@@ -1,6 +1,7 @@
 package com.nouhoun.springboot.jwt.integration.controller;
 
 import com.nouhoun.springboot.jwt.integration.config.DateUtil;
+import com.nouhoun.springboot.jwt.integration.domain.Car;
 import com.nouhoun.springboot.jwt.integration.domain.ReservationStation;
 import com.nouhoun.springboot.jwt.integration.domain.Station;
 import com.nouhoun.springboot.jwt.integration.service.StationService;
@@ -43,9 +44,15 @@ public class StationController {
     @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
     public List<Station> get() { return stationService.getAll(); }
 
-    @RequestMapping(method = RequestMethod.GET, value="/stations/free")
+    @RequestMapping(method = RequestMethod.POST, value="/stations/free",produces={MediaType.APPLICATION_JSON_VALUE}, consumes={MediaType.APPLICATION_JSON_VALUE})
     @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
     public List<Station> getAllStationsFreeWithinPeriod(@Param("date_start") Date date_start , @Param("date_end") Date date_end) throws ParseException {
         return stationService.getAllStationsFreeWithinPeriod( date_start,date_end);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value="/stations/name")
+    @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
+    public Station findWithoutUser(@RequestParam("name") String name ) {
+        return stationService.findByName(name);
     }
 }

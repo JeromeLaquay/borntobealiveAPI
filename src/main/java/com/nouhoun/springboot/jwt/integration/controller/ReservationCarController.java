@@ -62,7 +62,7 @@ public class ReservationCarController {
         return reservationCarService.findByUser(idUser);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value="/cars/{id}/reservations/existing")
+    @RequestMapping(method = RequestMethod.POST, value="/cars/{id}/reservations/existing", produces={MediaType.APPLICATION_JSON_VALUE}, consumes={MediaType.APPLICATION_JSON_VALUE})
     public boolean existingReservationWithinPeriod(@PathVariable(value="id") Integer idCar, @Param("date_start") Date date_start , @Param("date_end") Date date_end) throws ParseException {
         return reservationCarService.existingReservationWithinPeriod(idCar, date_start,date_end);
     }

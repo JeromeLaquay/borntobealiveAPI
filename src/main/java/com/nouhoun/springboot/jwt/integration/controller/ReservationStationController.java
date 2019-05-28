@@ -1,19 +1,13 @@
 package com.nouhoun.springboot.jwt.integration.controller;
 
-import com.nouhoun.springboot.jwt.integration.config.DateUtil;
-import com.nouhoun.springboot.jwt.integration.domain.ReservationCar;
 import com.nouhoun.springboot.jwt.integration.domain.ReservationStation;
 import com.nouhoun.springboot.jwt.integration.service.ReservationStationService;
 import org.springframework.data.repository.query.Param;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Timestamp;
 import java.text.ParseException;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -63,7 +57,7 @@ public class ReservationStationController {
         return reservationStationService.findByUser(idUser);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value="/stations/{id}/reservations/existing")
+    @RequestMapping(method = RequestMethod.POST, value="/stations/{id}/reservations/existing", produces={MediaType.APPLICATION_JSON_VALUE}, consumes={MediaType.APPLICATION_JSON_VALUE})
     @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
     public boolean existingReservationWithinPeriod(@PathVariable(value="id") Integer idStation, @Param("date_start") Date date_start , @Param("date_end") Date date_end) throws ParseException {
         return reservationStationService.existingReservationWithinPeriodForStation(idStation, date_start,date_end);
