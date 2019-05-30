@@ -42,7 +42,6 @@ public class ReservationCarService {
     }
 
     public boolean existingReservationWithinPeriod(Integer idCar, Date dateStart, Date dateEnd){
-        System.out.println("start : "+ dateStart + "   end : "+ dateEnd);
         return reservationCarRepository.findWithinPeriod(idCar,dateStart,dateEnd).isEmpty() ? false : true;
     }
 

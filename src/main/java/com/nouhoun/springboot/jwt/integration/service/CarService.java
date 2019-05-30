@@ -54,4 +54,12 @@ public class CarService {
         return carsFree;
     }
 
+    public Boolean existingReservationForOneCar(Integer idCar, Date date_start, Date date_end){
+        if(!resStationService.existingReservationWithinPeriodForCar(idCar,date_start,date_end) && !resCarService.existingReservationWithinPeriod(idCar,date_start,date_end)){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
 }

@@ -68,4 +68,10 @@ public class CarController {
     public List<Car> getAllCarsFreeWithinPeriod(@RequestBody ReservationCar resCar) {
         return carService.getAllCarsFreeWithinPeriod(resCar.getDate_start(),resCar.getDate_end());
     }
+
+    @RequestMapping(method = RequestMethod.POST, value="/cars/{id}/free",produces={MediaType.APPLICATION_JSON_VALUE}, consumes={MediaType.APPLICATION_JSON_VALUE})
+    @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
+    public Boolean existingReservationForOneCar(@PathVariable(value="id") Integer idCar, @Param("date_start") Date date_start , @Param("date_end") Date date_end) {
+        return carService.existingReservationForOneCar(idCar,date_start,date_end);
+    }
 }
