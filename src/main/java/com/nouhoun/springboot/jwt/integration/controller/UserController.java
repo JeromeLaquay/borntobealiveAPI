@@ -1,5 +1,6 @@
 package com.nouhoun.springboot.jwt.integration.controller;
 
+import com.nouhoun.springboot.jwt.integration.domain.Role;
 import com.nouhoun.springboot.jwt.integration.service.UserService;
 import com.nouhoun.springboot.jwt.integration.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -32,6 +34,11 @@ public class UserController {
     public User create(@RequestBody User user) {
         try{
             user.setPassword(passwordEncoder.encode(user.getPassword()));
+            Role role = new Role();
+            role.setId(10001);
+            List<Role> roles = new ArrayList<>();
+            roles.add(role);
+            user.setRoles(roles);
             User user2 = userService.createOrUpdate(user);
             return user2;
         }catch(Exception e){
